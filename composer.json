@@ -1,0 +1,33 @@
+{
+  "name": "objective-php/debugbar-package",
+  "description": "PHPDebugBar integration for Objective PHP",
+  "type": "library",
+  "keywords": [
+    "debug",
+    "objective php"
+  ],
+  "homepage": "https://github.com/objective-php/debugbar-package",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Jerome Schaeffer",
+      "email": "jsc@opcoding.eu",
+      "role": "developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "objective-php/components": "1.0.*",
+    "objective-php/message": "0.9.*",
+    "objective-php/application": "1.0.*",
+    "maximebf/debugbar": "1.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ObjectivePHP\\Package\\DebugBar\\": "src/"
+    }
+  }
+}

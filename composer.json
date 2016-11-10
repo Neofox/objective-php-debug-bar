@@ -1,18 +1,17 @@
 {
-  "name": "objective-php/debugbar-package",
+  "name": "neofox/objective-php-debug-bar",
   "description": "PHPDebugBar integration for Objective PHP",
   "type": "library",
   "keywords": [
     "debug",
     "objective php"
   ],
-  "homepage": "https://github.com/objective-php/debugbar-package",
-  "license": "GPL-3.0",
+  "homepage": "https://github.com/Neofox/objecive-php-debug-bar",
+  "license": "MIT",
   "authors": [
     {
       "name": "Jerome Schaeffer",
-      "email": "jsc@opcoding.eu",
-      "role": "developer"
+      "email": "jer.schaeffer@gmail.com"
     }
   ],
   "require": {

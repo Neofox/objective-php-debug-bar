@@ -31,8 +31,7 @@ composer require --dev neofox/objective-php-debug-bar:dev-master
 First of all, please always run the unit tests suite. Our tests are written using PHPUnit, and can be run as follow:
 
 ```
-cd [clone directory]/tests
-./phpunit .
+composer test
 ```
 
 ### Configure the package

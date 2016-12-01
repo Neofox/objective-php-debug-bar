@@ -28,5 +28,8 @@
     "psr-4": {
       "ObjectivePHP\\Package\\DebugBar\\": "src/"
     }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit -c tests/phpunit.xml tests"
   }
 }

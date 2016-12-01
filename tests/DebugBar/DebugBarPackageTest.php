@@ -39,7 +39,6 @@ class DebugBarPackageTest extends \PHPUnit_Framework_TestCase
         $app->getResponse()->getBody()->rewind();
         $this->assertContains('var phpdebugbar = new PhpDebugBar.DebugBar();', $app->getResponse()->getBody()->getContents());
         $app->getResponse()->getBody()->rewind();
-        var_dump($app->getResponse()->getBody()->getContents());die;
         $this->assertContains('<p>Hello</p>', $app->getResponse()->getBody()->getContents());
 
         /** @var DebugBar $debugbar */

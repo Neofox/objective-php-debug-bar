@@ -1,4 +1,4 @@
-# Objective PHP / DebugBar Package [![Build Status](https://secure.travis-ci.org/objective-php/primitives.png?branch=master)](http://travis-ci.org/objective-php/debugbar-package)
+# Objective PHP / DebugBar Package [![Build Status](https://secure.travis-ci.org/Neofox/objective-php-debug-bar.png?branch=master)](http://travis-ci.org/Neofox/objective-php-debug-bar)
 
 ## Project introduction
 

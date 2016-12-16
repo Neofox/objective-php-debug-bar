@@ -2,9 +2,13 @@ language: php
 php:
   - "7.0"
 before_script:
+  - pear install pear/PHP_CodeSniffer
+  - phpenv rehash
   - composer install
 notifications:
   email: 
     - "team@objective-php.org"
 script:
+  - phpcs --standard=PSR1 src/
+  - phpcs --standard=PSR2 src/
   - composer run-script --ansi test

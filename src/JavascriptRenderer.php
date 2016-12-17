@@ -22,7 +22,4 @@ class JavascriptRenderer extends BaseJavascriptRenderer
         parent::__construct($debugBar, $baseUrl, $basePath);
         //$this->cssFiles['objective'] = __DIR__ . '/Resources/objective-debugbar.css';
     }
-
-
-
 }

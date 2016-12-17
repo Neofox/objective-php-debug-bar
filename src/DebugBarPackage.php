@@ -8,16 +8,14 @@
 
 namespace ObjectivePHP\Package\DebugBar;
 
-
 use ObjectivePHP\Application\ApplicationInterface;
 
 class DebugBarPackage
 {
-    function __invoke(ApplicationInterface $app)
+    public function __invoke(ApplicationInterface $app)
     {
         $app->getAutoloader()->addPsr4('Dashblog\\Package\\DebugBar\\', 'packages/DebugBar/src');
         $app->getStep('rendering')->plug([$this, 'buildDebugBar']);
-
     }
 
     public function buildDebugBar(ApplicationInterface $app)
@@ -28,9 +26,5 @@ class DebugBarPackage
         $debugBar->modifyResponse();
 
         $app->getServicesFactory()->registerService(['id' => 'debugbar.debugbar', 'instance' => $debugBar]);
-
-
     }
-
-
 }

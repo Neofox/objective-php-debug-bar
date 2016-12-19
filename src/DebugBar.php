@@ -132,13 +132,15 @@ class DebugBar extends BaseDebugBar
             if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
                 $this->stackData();
             }
+
             // If request if Ajax
             /** @var HttpRequest $request */
             else {
                 if ($request->getHeaderLine('X-Request-With') == 'XMLHttpRequest') {
                     $this->sendDataInHeaders(true);
-                } elseif (($response->getHeaderLine('Content-Type') && strpos($response->getHeaderLine('Content-Type'),
-                        'html') === false)
+                } elseif (
+                ($response->getHeaderLine('Content-Type')
+                && strpos($response->getHeaderLine('Content-Type'), 'html') === false)
                 ) {
                     // Just collect + store data, don't inject it.
                     $this->collect();

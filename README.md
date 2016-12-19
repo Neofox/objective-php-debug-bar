@@ -4,6 +4,13 @@
 
 This package allow to add a php debugbar in Objective PHP
 
+## Requirement
+For the moment this package will require two steps in your application:
+- Route
+- Rendering
+
+Steps names will be configurable in a futur releases.
+
 ## Installation
 
 ### Manual
@@ -23,6 +30,12 @@ The easiest way to install the library and get ready to play with it is by using
 ```
 composer require --dev neofox/objective-php-debug-bar:dev-master 
 ```
+### Usage
+Now that you get the package, you need to plug it in your application (Application.php):
+```
+$this->getStep('bootstrap')->plug(DebugBarPackage::class)
+```
+And you're done!
 
 ## How to test the work in progress?
 

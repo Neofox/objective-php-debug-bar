@@ -61,17 +61,17 @@ class DebugBarPackage
 
         // Assets routes
         $app->getConfig()->import(new FastRoute('debugbarcss', '/debugbarcss', function () use ($debugBar) {
-                $renderer = $debugBar->getJavascriptRenderer();
-                $content = $renderer->dumpAssetsToString('css');
+            $renderer = $debugBar->getJavascriptRenderer();
+            $content = $renderer->dumpAssetsToString('css');
 
-                return new TextResponse($content, 200, ['Content-Type' => 'text/css']);
+            return new TextResponse($content, 200, ['Content-Type' => 'text/css']);
         }));
 
         $app->getConfig()->import(new FastRoute('debugbarjs', '/debugbarjs', function () use ($debugBar) {
-                $renderer = $debugBar->getJavascriptRenderer();
-                $content = $renderer->dumpAssetsToString('js');
+            $renderer = $debugBar->getJavascriptRenderer();
+            $content = $renderer->dumpAssetsToString('js');
 
-                return new TextResponse($content, 200, ['Content-Type' => 'text/javascript']);
+            return new TextResponse($content, 200, ['Content-Type' => 'text/javascript']);
         }));
     }
 

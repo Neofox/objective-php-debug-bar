@@ -19,6 +19,9 @@
         timeoutForMediumTests="10"
         timeoutForLargeTests="60"
         verbose="false">
+    <testsuite>
+        <directory>./</directory>
+    </testsuite>
     <filter>
         <whitelist>
             <directory>../src</directory>

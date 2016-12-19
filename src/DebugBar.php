@@ -2,18 +2,20 @@
 
 namespace ObjectivePHP\Package\DebugBar;
 
-
 use ObjectivePHP\Package\DebugBar\Config as DebugBarConfig;
-use DebugBar\DataCollector\{
-    MemoryCollector, MessagesCollector, PDO\PDOCollector, PhpInfoCollector, RequestDataCollector, TimeDataCollector, ExceptionsCollector
-};
+use DebugBar\DataCollector\MemoryCollector;
+use DebugBar\DataCollector\MessagesCollector;
+use DebugBar\DataCollector\PDO\PDOCollector;
+use DebugBar\DataCollector\PhpInfoCollector;
+use DebugBar\DataCollector\RequestDataCollector;
+use DebugBar\DataCollector\TimeDataCollector;
+use DebugBar\DataCollector\ExceptionsCollector;
 use DebugBar\DebugBar as BaseDebugBar;
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Message\Request\HttpRequest;
 
 class DebugBar extends BaseDebugBar
 {
-
     /** @var ApplicationInterface */
     protected $app;
 
@@ -33,7 +35,6 @@ class DebugBar extends BaseDebugBar
 
     public function run()
     {
-
         if ($this->isRunning) {
             return;
         }
@@ -75,7 +76,6 @@ class DebugBar extends BaseDebugBar
             }
             $this->addCollector(new PDOCollector($TODO, $timeCollector));
         }
-
     }
 
     public function shouldCollect($name, $default = false) : bool
@@ -124,7 +124,6 @@ class DebugBar extends BaseDebugBar
 
     public function modifyResponse()
     {
-
         $response = $this->app->getResponse();
         $request = $this->app->getRequest();
 
@@ -132,14 +131,13 @@ class DebugBar extends BaseDebugBar
             // If request is redirection
             if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
                 $this->stackData();
-            }
-            // If request if Ajax
-            /** @var HttpRequest $request */
-            else {
+            } else {
+                // If request if Ajax
+                /** @var HttpRequest $request */
                 if ($request->getHeaderLine('X-Request-With') == 'XMLHttpRequest') {
                     $this->sendDataInHeaders(true);
-                } elseif (($response->getHeaderLine('Content-Type') && strpos($response->getHeaderLine('Content-Type'),
-                        'html') === false)
+                } elseif (($response->getHeaderLine('Content-Type')
+                && strpos($response->getHeaderLine('Content-Type'), 'html') === false)
                 ) {
                     // Just collect + store data, don't inject it.
                     $this->collect();
@@ -148,11 +146,8 @@ class DebugBar extends BaseDebugBar
                 }
 
                 $this->injectDebugbar();
-
             }
-
         }
-
     }
 
     public function injectDebugbar()
@@ -175,7 +170,6 @@ class DebugBar extends BaseDebugBar
         $response->getBody()->rewind();
         $response->getBody()->write($content);
         $response->withoutHeader('Content-Length');
-
     }
 
     public function getJavascriptRenderer($baseUrl = null, $basePath = null)
@@ -186,6 +180,4 @@ class DebugBar extends BaseDebugBar
 
         return $this->jsRenderer;
     }
-
-
 }

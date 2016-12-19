@@ -11,7 +11,6 @@ use ObjectivePHP\Package\DebugBar\DebugBarPackage;
 
 class DebugBarPackageTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testPackageIsCallable()
     {
         $package = new DebugBarPackage();
@@ -37,13 +36,14 @@ class DebugBarPackageTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($app->getServicesFactory()->has('debugbar.debugbar'));
 
         $app->getResponse()->getBody()->rewind();
-        $this->assertContains('var phpdebugbar = new PhpDebugBar.DebugBar();', $app->getResponse()->getBody()->getContents());
+        $this->assertContains(
+            'var phpdebugbar = new PhpDebugBar.DebugBar();',
+            $app->getResponse()->getBody()->getContents()
+        );
         $app->getResponse()->getBody()->rewind();
         $this->assertContains('<p>Hello</p>', $app->getResponse()->getBody()->getContents());
 
         /** @var DebugBar $debugbar */
         $debugbar = $app->getServicesFactory()->get('debugbar.debugbar');
-
     }
-
 }

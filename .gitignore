@@ -2,3 +2,4 @@
 vendor/*
 tests/coverage/*
 composer.phar
+.php_cs.cache

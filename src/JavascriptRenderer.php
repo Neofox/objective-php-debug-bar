@@ -22,4 +22,35 @@ class JavascriptRenderer extends BaseJavascriptRenderer
         parent::__construct($debugBar, $baseUrl, $basePath);
         //$this->cssFiles['objective'] = __DIR__ . '/Resources/objective-debugbar.css';
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function renderHead()
+    {
+        $html  = "<link rel='stylesheet' type='text/css' property='stylesheet' href='/debugbarcss'>";
+        $html .= "<script type='text/javascript' src='/debugbarjs'></script>";
+
+        if ($this->isJqueryNoConflictEnabled()) {
+            $html .= '<script type="text/javascript">jQuery.noConflict(true);</script>' . "\n";
+        }
+
+        return $html;
+    }
+
+    /**
+     * Return assets as a string
+     *
+     * @param string $type 'js' or 'css'
+     * @return string
+     */
+    public function dumpAssetsToString($type)
+    {
+        $files = $this->getAssets($type);
+        $content = '';
+        foreach ($files as $file) {
+            $content .= file_get_contents($file) . "\n";
+        }
+        return $content;
+    }
 }

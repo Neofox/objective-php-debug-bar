@@ -137,7 +137,7 @@ class DebugBar extends BaseDebugBar
                 if ($request->getHeaderLine('X-Request-With') == 'XMLHttpRequest') {
                     $this->sendDataInHeaders(true);
                 } elseif (($response->getHeaderLine('Content-Type')
-                && strpos($response->getHeaderLine('Content-Type'), 'html') === false)
+                    && strpos($response->getHeaderLine('Content-Type'), 'html') === false)
                 ) {
                     // Just collect + store data, don't inject it.
                     $this->collect();
@@ -156,7 +156,7 @@ class DebugBar extends BaseDebugBar
 
         $response->getBody()->rewind();
         $content = $response->getBody()->getContents();
-        $renderer = $this->getJavascriptRenderer(__DIR__.'/../vendor/maximebf/debugbar/src/DebugBar/Resources/');
+        $renderer = $this->getJavascriptRenderer();
 
         $renderedContent = $renderer->renderHead() . $renderer->render();
         $pos = strripos($content, '</body>');
@@ -179,5 +179,13 @@ class DebugBar extends BaseDebugBar
         }
 
         return $this->jsRenderer;
+    }
+
+    public function isValidUrl()
+    {
+        $url = $_SERVER["REQUEST_URI"];
+        $exludedUrl = ['/debugbarjs', '/debugbarcss']; //TODO: add config
+
+        return !in_array($url, $exludedUrl);
     }
 }

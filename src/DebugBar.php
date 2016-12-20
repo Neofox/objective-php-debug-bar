@@ -2,6 +2,7 @@
 
 namespace ObjectivePHP\Package\DebugBar;
 
+use ObjectivePHP\Package\DebugBar\Collector\WorkflowCollector;
 use ObjectivePHP\Package\DebugBar\Config as DebugBarConfig;
 use DebugBar\DataCollector\MemoryCollector;
 use DebugBar\DataCollector\MessagesCollector;
@@ -39,8 +40,6 @@ class DebugBar extends BaseDebugBar
             return;
         }
 
-        $debugBar = $this;
-
         if ($this->shouldCollect('phpinfo', true)) {
             $this->addCollector(new PhpInfoCollector());
         }
@@ -67,14 +66,8 @@ class DebugBar extends BaseDebugBar
             $this->addCollector(new RequestDataCollector());
         }
 
-        // TODO: need a pdo object
-        if ($this->shouldCollect('db', false)) {
-            if ($debugBar->hasCollector('time')) {
-                $timeCollector = $debugBar->getCollector('time');
-            } else {
-                $timeCollector = null;
-            }
-            $this->addCollector(new PDOCollector($TODO, $timeCollector));
+        if ($this->shouldCollect('workflow', true)) {
+            $this->addCollector((new WorkflowCollector())->setApp($this->app));
         }
     }
 
